@@ -7,6 +7,7 @@ const {Videogame} = require('../db')
 
 router.get('/videogames', async function(_req, res, next){
     try{
+    
         const rta = []
         const videoDb = await Videogame.findAll()
         const videoApi = await axios.get(`https://api.rawg.io/api/games?key=` + KEY );
