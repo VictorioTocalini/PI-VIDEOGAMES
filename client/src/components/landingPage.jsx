@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch} from 'react-redux';
-import { getVideogames } from '../actions';
+import { getGenres, getPlatforms, getVideogames } from '../actions';
 import { useEffect } from "react";
 
 function LandingPage(){
@@ -8,6 +8,8 @@ function LandingPage(){
 
     useEffect(()=>{
         dispatch(getVideogames())
+        dispatch(getPlatforms())
+        dispatch(getGenres())
     },[dispatch]);
 
     function enter(e){

@@ -1,4 +1,4 @@
-import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME} from './constant';
+import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS} from './constant';
 
 const LH = 'http://localhost:3001';
 
@@ -59,6 +59,19 @@ export function postVideogame(input){
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(input)
+        })
+    }
+}
+
+export function getPlatforms(){
+    return function(dispatch){
+        fetch(LH+'/platforms')
+        .then( r=> r.json())
+        .then(json => {
+            dispatch({
+                type: GET_PLATFORMS,
+                payload: json
+            })
         })
     }
 }

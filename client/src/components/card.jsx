@@ -7,19 +7,19 @@ function Card({videogame}){
     const dispatch = useDispatch();
     
     function idToState(){
-        dispatch(getById(videogame.id))
+        dispatch(getById(videogame.ID))
     }
 
-    return <div className= 'gameCard'>
-    <Link 
-    onClick={idToState} 
-    to={'/videogame/'+ videogame.ID}
-    >
+    return <div key= {videogame.ID} className= 'gameCard'>
+        <Link 
+        onClick={idToState} 
+        to={'/videogame/'+ videogame.ID}
+        >
         <h2>{videogame.name}</h2>
-    </Link>
+        </Link>
         {videogame.genres.map((g)=>{
-            return <h1 key={g.id}>{g.name}</h1>
-        })}
+            return <h1 key={g.name +' '+ g.id }>{g.name}</h1>
+        })}.
         <img
          className='image'
          src={videogame.image} 

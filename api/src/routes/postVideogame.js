@@ -5,17 +5,17 @@ const validator = require('validator');
 
 router.post('/addvideogame', async function(req,res,next){
     try{
-        const {name, description, release_date, rating, platforms, image, genre} = req.body;
+        const {name, description, release_date, rating, platforms, image, genres} = req.body;
         if(name&&description&&platforms){
             const newVideogame = {
                 name, description, platforms,
                 release_date: 'unknown',
                 rating: 0,
                 image: '',
-                genre: ['']
+                genres: ['']
             }
             if(image) newVideogame.image = image
-            if(genre) newVideogame.genre = genre
+            if(genres) newVideogame.genres = genres
             if(rating){
                 if(rating>=0 && rating<=5) newVideogame.rating= rating
             }
@@ -30,7 +30,7 @@ router.post('/addvideogame', async function(req,res,next){
                 rating: newVideogame.rating,
                 platforms: newVideogame.platforms,
                 image: newVideogame.image,
-                genre: newVideogame.genre
+                genres: newVideogame.genres
             }})
             if(!add[0]._options.isNewRecord){
                 const msg= 'this activity has already been created'
