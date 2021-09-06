@@ -5,21 +5,23 @@ import {Route} from 'react-router-dom'
 import LandingPage from './components/landingPage'
 import HomePage from './components/home';
 import Formulario from './components/form';
+import GameDetail from './components/gameDetail';
+
 
 function App(props) {
   return (
     <div className="App">
     <Route exact path= '/'> 
-    <LandingPage></LandingPage>
+      <LandingPage/>
     </Route>
-    {/* <Route path='/'>
-      <nav></nav>
-    </Route> */}
     <Route exact path= '/home'>
-      <HomePage></HomePage>
+      <HomePage/>
     </Route>
     <Route exact path= '/create'>
-      <Formulario></Formulario>
+      <Formulario/>
+    </Route>
+    <Route path= '/videogame/:id'>
+      <GameDetail/>
     </Route>
   </div>
   );

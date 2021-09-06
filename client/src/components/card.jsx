@@ -1,6 +1,7 @@
 import {useDispatch} from 'react-redux'
 import {getById} from '../actions/index'
 import { Link } from "react-router-dom";
+import './card.css'
 
 
 function Card({videogame}){
@@ -18,7 +19,8 @@ function Card({videogame}){
         <h2>{videogame.name}</h2>
         </Link>
         {videogame.genres.map((g)=>{
-            return <h1 key={g.name +' '+ g.id }>{g.name}</h1>
+             return g.name? <h1 key={g.name +'/'+ g.id }>{g.name}</h1> : 
+             <h1 key={g +'/'+ videogame.ID }>{g}</h1>
         })}.
         <img
          className='image'

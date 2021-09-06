@@ -12,6 +12,11 @@ router.get('/videogames', async function(_req, res, next){
         const videoDb = await Videogame.findAll()
         const videoApi = await axios.get(`https://api.rawg.io/api/games?key=` + KEY );
         const apiGames = videoApi.data.results;
+        apiGames.sort(function(a,b){
+            if( a.name < b.name ) {return -1};
+            if( a.name > b.name ) {return 1 };
+            return 0
+        })
         apiGames.forEach((v) => {
             const obj= {
                 ID: v.id,

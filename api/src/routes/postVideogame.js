@@ -12,7 +12,7 @@ router.post('/addvideogame', async function(req,res,next){
                 release_date: 'unknown',
                 rating: 0,
                 image: '',
-                genres: ['']
+                genres: ''
             }
             if(image) newVideogame.image = image
             if(genres) newVideogame.genres = genres
@@ -21,7 +21,8 @@ router.post('/addvideogame', async function(req,res,next){
             }
             // ^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$
             if(release_date){
-                if(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(release_date)) newVideogame.release_date= release_date
+               newVideogame.release_date = release_date
+                // if(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(release_date)) newVideogame.release_date= release_date
             }
             const add = await Videogame.findOrCreate({where:{
                 name: newVideogame.name,

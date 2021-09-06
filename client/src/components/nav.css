@@ -1,0 +1,22 @@
+.nav{
+    background-color: #192734    ;
+    display: flex;
+    justify-items: flex-end;
+    margin-bottom: 15px;
+    justify-content: center;
+    border: 2px solid #A5AFAF;
+    height: 40px;
+
+}
+
+.li{
+    display: inline-table;
+    margin-left: 100px;
+    margin-right: 100px;
+    color: beige;
+    margin-top: -10px;
+}
+.ul{
+    display: flex;
+    align-items: center;
+}

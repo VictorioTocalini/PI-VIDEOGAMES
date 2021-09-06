@@ -1,9 +1,10 @@
-import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS} from '../actions/constant';
+import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS, FILTER_BY_DB,ALFABETIC} from '../actions/constant';
 
 var initialState = {
     videogames: [],
     genres: [],
-    platforms: []
+    platforms: [],
+    byID: [],
 }
 
 export default function reducer (state = initialState, action){
@@ -21,7 +22,7 @@ export default function reducer (state = initialState, action){
         case GET_BY_ID:
             return{
                 ...state,
-                videogames: action.payload
+                byID: action.payload
             }
         case GET_BY_NAME:
             return{
@@ -32,6 +33,16 @@ export default function reducer (state = initialState, action){
             return{
                 ...state,
                 platforms: action.payload
+            }
+        case ALFABETIC:
+            return{
+                ...state,
+                videogames: action.payload
+            }
+        case FILTER_BY_DB:
+            return{
+                ...state,
+                videogames: action.payload
             }
         default: return state
     }

@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { postVideogame, getGenres, getPlatforms} from '../actions';
+import Nav from './nav';
 
 export default function Formulario (){
     const dispatch = useDispatch();
@@ -50,6 +51,7 @@ export default function Formulario (){
         return alert('complete')
     }
     return<>
+    <Nav/>
         <form onSubmit={handelSubmit}>
             <label htmlFor='name'> name </label>
             <input

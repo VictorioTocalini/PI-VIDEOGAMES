@@ -17,7 +17,7 @@ router.get('/videogame/:id', async function(req,res,next){
                     name: videoDb.name,
                     image: videoDb.image,
                     rating: videoDb.rating,
-                    genres:  videoDb.genre,
+                    genres:  videoDb.genres,
                     description: videoDb.description,
                     released: videoDb.release_date,
                     platforms: videoDb.platforms
