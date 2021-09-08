@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { postVideogame, getGenres, getPlatforms} from '../actions';
+import { postVideogame, getGenres, getPlatforms, getVideogames} from '../actions';
 import Nav from './nav';
 
 export default function Formulario (){
@@ -45,6 +45,7 @@ export default function Formulario (){
         input.platforms = platforms
         console.log(input)
         dispatch(postVideogame(input))
+        dispatch(getVideogames())
         setInput(obj)
         setGenres([])
         setPlatforms([])

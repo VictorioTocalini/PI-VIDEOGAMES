@@ -7,11 +7,13 @@ const {Videogame} = require('../db')
 
 router.get('/videogames', async function(_req, res, next){
     try{
-    
         const rta = []
+        const apiGames = []
         const videoDb = await Videogame.findAll()
-        const videoApi = await axios.get(`https://api.rawg.io/api/games?key=` + KEY );
-        const apiGames = videoApi.data.results;
+        for(let i = 1; i<4; i++){
+            const videoApi = await axios.get(`https://api.rawg.io/api/games?key=` + KEY +'&page='+i);
+            videoApi.data.results.forEach((g)=> apiGames.push(g))
+        }
         apiGames.sort(function(a,b){
             if( a.name < b.name ) {return -1};
             if( a.name > b.name ) {return 1 };

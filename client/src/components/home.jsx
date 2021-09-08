@@ -1,9 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux'
 import React from "react";
-import {getByName} from '../actions/index'
+import {getById, getByName} from '../actions/index'
 import './home.css'
-import Card from './card';
-import { getVideogames, alfabeticOrder,databaseGame} from '../actions';
+import { getVideogames, ratingOrder,alfabeticOrder,databaseGame} from '../actions';
+import PaginateVideogames from './pagination';
 import { useEffect } from "react";
 import Nav from './nav';
 
@@ -15,8 +15,7 @@ function HomePage(){
     useEffect(()=>{
         dispatch(getVideogames())
     },[dispatch]);
-    
-    const videogames = useSelector((state)=> state.videogames);
+
     function handleInput(e){
         e.preventDefault();
         setInput({
@@ -25,7 +24,7 @@ function HomePage(){
         })
     };
 
-    async function onSubmitSearch(e){
+    async function onSubmitSearch(){
         const search = input.Searchbar;
         if(search){
             if(search.length > 1){
@@ -36,6 +35,10 @@ function HomePage(){
     function alfOrder(e){
         e.preventDefault()
         dispatch(alfabeticOrder(e.target.value))
+    }
+    function ratOrder(e) {
+        console.log(e)
+        dispatch(ratingOrder(e.target.value))
     }
     function DBorAPI(e){
         e.preventDefault()
@@ -58,6 +61,11 @@ function HomePage(){
             <option value= 'A-Z'>A-Z</option>
             <option value='Z-A'> Z-A</option>
         </select>
+        <select className= 'searchbar' onChange= {ratOrder}>
+            <option value= {null}>rating</option>
+            <option value='min-max'>min-max</option>
+            <option value='max-min'>max-min</option>
+        </select>
         <select className= 'searchbar' onChange= {DBorAPI} >
             <option value= 'ALL'>all</option>
             <option value= 'DB'>from DataBase</option>
@@ -65,14 +73,16 @@ function HomePage(){
         </select>
     </div>
     <div className= 'cardBox'>
-    {videogames.length>0? videogames.map((v)=> {
-            return<Card
-            key= {v.ID}
-            videogame= {v}
-            />
-        }): null} 
+        <PaginateVideogames/>
     </div>
     </>
 }
 
 export default HomePage
+
+// {videogames.length>0? videogames.map((v)=> {
+//     return<Card
+//     key= {v.ID}
+//     videogame= {v}
+//     />
+// }): null} 

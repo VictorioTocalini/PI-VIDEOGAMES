@@ -1,4 +1,4 @@
-import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS,FILTER_BY_DB,ALFABETIC} from './constant';
+import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS,FILTER_BY_DB,ALFABETIC,RATING} from './constant';
 
 const LH = 'http://localhost:3001';
 
@@ -32,6 +32,7 @@ export function getById (id){
         fetch(LH+'/videogame/' + id)
         .then( r=> r.json())
         .then(json => {
+            console.log('byid action',json)
             dispatch({
                 type: GET_BY_ID,
                 payload: json
@@ -127,4 +128,32 @@ export function alfabeticOrder (value){
         })
        })
    }
+}
+
+export function ratingOrder(value){
+    return function(dispatch) {
+        if(value === 'null') return
+        fetch(LH + '/videogames')
+        .then(r => r.json())
+        .then(json => {
+         if(value === 'max-min'){
+             json.sort(function(a,b){
+                 if( a.rating > b.rating ) {return -1};
+                 if( a.rating < b.rating ) {return 1 };
+                 return 0
+             })
+         }
+         if(value === 'min-max'){
+             json.sort(function(a,b){
+                 if( a.rating < b.rating ) {return -1};
+                 if( a.rating > b.rating ) {return 1 };
+                 return 0
+             })
+         }
+         dispatch({
+             type:RATING,
+             payload:json
+         })
+        })
+    }
 }

@@ -25,7 +25,7 @@ function Card({videogame}){
         <img
          className='image'
          src={videogame.image} 
-         alt='agregame una foto :D'
+         alt='add a photo'
          />
     </div>
 }

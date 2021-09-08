@@ -9,9 +9,12 @@ router.get('/videogames/q', async function(req, res, next){
     try{
         const {name} = req.query
         const rta= []
+        const apiGames = [];
         const videoDb = await Videogame.findAll()
-        const videoApi = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${KEY}` );
-        const apiGames = videoApi.data.results;
+        for(let i= 1; i<4; i++){
+            const videoApi = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${KEY}&page=${i}` );
+            videoApi.data.results.forEach((g)=> apiGames.push(g));
+        }
         apiGames.forEach((v) => {
             const obj= {
                 ID: v.id,

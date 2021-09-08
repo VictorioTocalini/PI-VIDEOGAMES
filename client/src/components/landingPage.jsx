@@ -12,15 +12,12 @@ function LandingPage(){
         dispatch(getGenres())
     },[dispatch]);
 
-    function enter(e){
-        
-    }
     return <> 
         <div>
             <h1 className= 'title'>
                 World of Games
             </h1>
-            <Link to ='/home' onClick= {enter}>
+            <Link to ='/home' >
             <h3 className= 'enter'>
                 enter
             </h3>

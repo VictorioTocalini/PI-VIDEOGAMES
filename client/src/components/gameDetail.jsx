@@ -42,7 +42,7 @@ function GameDetail(){
         </div>
     </>
     } else return<>
-        <h1 className='error'> error </h1>
+        <h1 className='error'> loading </h1>
      </>
 }
 

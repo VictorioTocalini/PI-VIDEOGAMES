@@ -6,3 +6,4 @@ export const POST_GAMES = 'POST_GAMES';
 export const GET_PLATFORMS = 'GET_PLATFORMS'; 
 export const FILTER_BY_DB = 'FILTER_BY_DB';
 export const ALFABETIC = 'ALFABETIC';
+export const RATING = 'RATING';
