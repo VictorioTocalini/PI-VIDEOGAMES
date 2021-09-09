@@ -16,13 +16,13 @@ function Card({videogame}){
         onClick={idToState} 
         to={'/videogame/'+ videogame.ID}
         >
-        <h2>{videogame.name}</h2>
+        <h2 className='cardTitle'>{videogame.name}</h2>
         </Link>
         <ul  className='genres'>
         {videogame.genres.map((g)=>{
             return g.name? <li  key={g.name +'/'+ g.id }>{g.name}</li> : 
             <li  key={g +'/'+ videogame.ID }>{g}</li>
-        })}.
+        })}
         </ul>
         <img
          className='image'

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import Card from './card';
 import { useEffect, useState } from 'react';
+import './pagination.css'
 
 function PaginateVideogames() {
     const videogames = useSelector(state => state.videogames);
@@ -30,12 +31,12 @@ function PaginateVideogames() {
     const pageNumber = Math.ceil(currentPage/15) +1
     return <> 
         {pagination ? (
-            <div>
-                <label > page:{pageNumber} </label>
-                <button className='button' onClick={firstPage} > {"<<"} </button>
-                <button className='button' onClick={prevPage} > {"<"}   </button>
-                <button className='button' onClick={nextPage} > {">"}   </button>
-                <button className='button' onClick={lastPage} > {">>"}  </button>
+            <div className='Page_buttons'>
+                <label className='labelFilter'> page: {pageNumber} </label>
+                <button className='Page_button' onClick={firstPage} > {"<<"} </button>
+                <button className='Page_button' onClick={prevPage} > {"<"}   </button>
+                <button className='Page_button' onClick={nextPage} > {">"}   </button>
+                <button className='Page_button' onClick={lastPage} > {">>"}  </button>
             </div>
         ): null}
         <div className='cardBox' >

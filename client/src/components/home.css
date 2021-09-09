@@ -1,3 +1,31 @@
-.labelHome{
-    color: black;
+.labelFilter{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.HomeBox{
+    width: 100%;
+}
+.title{
+    font-size: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.Searchbar{
+   width: 80%;
+}
+.filters{
+    margin-inline: 5px;
+    height: 20px;   
+}
+.button_search{
+    border-radius: 5px;
+    width: 15%;
+}
+.divHome{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+.divSearchbar{
+    width: 20%;
 }

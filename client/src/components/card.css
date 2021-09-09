@@ -1,12 +1,17 @@
+*{text-decoration: none;}
 .image{
-    width: 400px
+    width: 400px;
+    margin-bottom: 8px;
 }
 .gameCard{
-    border: 1px solid black;
+    border: 2px solid #A5AFAF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background-color: #192734;
+    margin-bottom: 10px;
+    margin-inline: 5px;
 }
 .cardBox{
     display: flex;
@@ -14,13 +19,22 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
+    background-color: #56565A;
+    margin-top: 10px;
 }
 .genres{
     display: flex;
     flex-direction: row;
+    color: #A5AFAF;
 }
 li{
     display: inline;
     margin-inline: 5px;
     font-size: 20px;
+}
+.cardTitle{
+    border: 1px solid  #A5AFAF;
+    border-radius: 5px;
+    width: 200px;
+    color: #A5AFAF;
 }

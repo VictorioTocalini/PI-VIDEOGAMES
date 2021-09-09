@@ -18,28 +18,33 @@ function GameDetail(){
     if(game.name){
         return <>
         <Nav/>
-        <div className= 'cardBox '>
-            <h1> {game.name} </h1>
-            <h4> RATING : {game.rating>0? game.rating : 'no official rating'} </h4>
-            <h3> RELEASE DATE :{game.released} </h3>
-            <ul key= 'platforms 'className= 'platforms'>
-                    LAUNCHED FOR:
-                {game.platforms? game.platforms.map((g)=>{
-                    return g.platform? <li key={g.platform.id}> {g.platform.name}</li> :
-                        <li key={g}> {g} </li>
-                }): null}
-            </ul>
-            <ul key='genres' className= 'genres'>
-                GENRES:
-                {game.genres? game.genres.map((g)=>{
-                    return g.name? <li key={g.id}> {g.name}</li> :
-                        <li key={g}> {g} </li>
-                }): null}
-            </ul>
+        <div className= 'detailBox '>
+            <div className='data'>
+                <h1> {game.name} </h1>
+                <h4> RATING : {game.rating>0? game.rating : 'no official rating'} </h4>
+                <h3> RELEASE DATE : {game.released} </h3>
+                <ul key= 'platforms 'className= 'platformsDetail'>
+                    <li> LAUNCHED FOR: </li>
+                    {game.platforms? game.platforms.map((g)=>{
+                        return g.platform? <li key={g.platform.id}>{g.platform.name}</li> :
+                        <li key={g}>{g}</li>
+                    }): null}
+                </ul>
+                <ul key='genres' className= 'genresDetail'>
+                    <li>GENRES: </li>
+                    {game.genres? game.genres.map((g)=>{
+                        return g.name? <li key={g.id}>{g.name}</li> :
+                        <li key={g}>{g}</li>
+                    }): null}
+                </ul>
+            </div>
             <img className='gameDetailImage' src={game.image} alt=''/> 
-            <h3> description </h3>
+            <br/>   
+        </div> 
+            <div className='description'>
+            <h3 className='titleDescription'> description </h3>
             {game.description.replace(/<[^>]*>?/g, '')}
-        </div>
+            </div>
     </>
     } else return<>
         <h1 className='error'> loading </h1>
