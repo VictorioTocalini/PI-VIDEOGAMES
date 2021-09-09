@@ -1,4 +1,4 @@
-import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS,FILTER_BY_DB,ALFABETIC,RATING} from './constant';
+import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS,FILTER_BY_DB,ALFABETIC,RATING, GENRES} from './constant';
 
 const LH = 'http://localhost:3001';
 
@@ -153,6 +153,29 @@ export function ratingOrder(value){
          dispatch({
              type:RATING,
              payload:json
+         })
+        })
+    }
+}
+export function genreOrder(value){
+    return function(dispatch) {
+        if(value === 'null') return
+        fetch(LH + '/videogames')
+        .then(r => r.json())
+        .then(json => {
+            const arr =[];
+            json.forEach((v)=>{
+                v.genres.forEach((g)=>{
+                    if(g.name){
+                        if(g.name === value) arr.push(v)
+                    }else {
+                        if(g===value) arr.push(v)
+                    }
+                })
+            })
+         dispatch({
+             type:GENRES,
+             payload:arr
          })
         })
     }

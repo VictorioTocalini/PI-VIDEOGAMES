@@ -1,4 +1,4 @@
-import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS, FILTER_BY_DB,ALFABETIC,RATING} from '../actions/constant';
+import {GET_GAMES,GET_GENRES,GET_BY_ID,GET_BY_NAME,GET_PLATFORMS, FILTER_BY_DB,ALFABETIC,RATING,GENRES} from '../actions/constant';
 
 var initialState = {
     videogames: [],
@@ -48,6 +48,11 @@ export default function reducer (state = initialState, action){
             return{
                 ...state,
                 videogames: action.payload
+            }
+        case GENRES:
+            return{
+                ...state,
+                videogames:action.payload
             }
         default: return state
     }

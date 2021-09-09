@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { postVideogame, getGenres, getPlatforms, getVideogames} from '../actions';
 import Nav from './nav';
+import './form.css'
 
 export default function Formulario (){
     const dispatch = useDispatch();
@@ -39,11 +40,11 @@ export default function Formulario (){
             })
         }
     }
+     
     function handelSubmit(e){
         e.preventDefault();
         input.genres = genres
         input.platforms = platforms
-        console.log(input)
         dispatch(postVideogame(input))
         dispatch(getVideogames())
         setInput(obj)
@@ -53,63 +54,72 @@ export default function Formulario (){
     }
     return<>
     <Nav/>
-        <form onSubmit={handelSubmit}>
-            <label htmlFor='name'> name </label>
+        <form className='FORM' onSubmit={handelSubmit}>
+            <label className= 'labelform' htmlFor='name'> name </label>
             <input
+              maxLength={50}
               key='Name'
               type='text'
               name='name'
               onChange={onInputChange}
               value={input.name}
               required
-            />
-            <label htmlFor='description'> description </label>
+              />
+            <label className= 'labelform'htmlFor='description'> description </label>
             <input
+              className= 'input_description'
+              maxLength={500}
+              size={50}
               key='description'
               type='text'
               name='description'
               onChange={onInputChange}
               value={input.description}
               required
-            />
-            <label htmlFor='release_date'> release_date </label>
+              />
+            <label className= 'labelform' htmlFor='release_date'> release_date </label>
             <input
               key='release_date'
               type='date'
               name='release_date'
               onChange={onInputChange}
               value={input.release_date}
-            />
-            <label htmlFor='rating'> rating </label>
+              />
+            <label className= 'labelform' htmlFor='rating'> rating </label>
             <input
               key='rating'
               type='number'
               name='rating'
+              max={5}
+              min={0}
+              step={0.1}
               onChange={onInputChange}
               value={input.rating}
-            />
-            <label htmlFor='genres' > genres </label>
+              />
+            <label className= 'labelform' htmlFor='genres' > genres </label>
             <select name='genres' onChange={onInputChange} >
                 {genresState.map((g) => {
                     return <option key= {g.ID} value={g.name}>{g.name}</option>
                 })}
             </select>
-            <label htmlFor='platforms' > platforms </label>
+            <label className= 'labelform' htmlFor='platforms' > platforms </label>
             <select name='platforms' onChange={onInputChange} required >
                 {platformsState.map((g) => {
                     return <option key= {g} value={g}>{g}</option>
                 })}
             </select>
-            <label htmlFor='image'> image </label>
+            <label className= 'labelform' htmlFor='image'> image </label>
             <input
               key='image'
               type='url'
               name='image'
               onChange={onInputChange}
               value={input.image}
-            />
+              />
+              <img width='10%' src={input.image} alt=''/>
             <button type='submit'>CREATE</button>
         </form>
+        
     </>
 
 }

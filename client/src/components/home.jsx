@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from 'react-redux'
 import React from "react";
-import {getById, getByName} from '../actions/index'
+import {getByName, getGenres} from '../actions/index'
 import './home.css'
-import { getVideogames, ratingOrder,alfabeticOrder,databaseGame} from '../actions';
+import { getVideogames, ratingOrder,alfabeticOrder,databaseGame,genreOrder} from '../actions';
 import PaginateVideogames from './pagination';
 import { useEffect } from "react";
 import Nav from './nav';
@@ -11,11 +11,12 @@ import Nav from './nav';
 function HomePage(){
     const [input, setInput] = React.useState('');
     const dispatch = useDispatch();
-
     useEffect(()=>{
         dispatch(getVideogames())
+        dispatch(getGenres())
     },[dispatch]);
-
+    
+    const genresState = useSelector(state=>state.genres)
     function handleInput(e){
         e.preventDefault();
         setInput({
@@ -44,6 +45,10 @@ function HomePage(){
         e.preventDefault()
         dispatch(databaseGame(e.target.value))
     }
+    function genOrder(e) {
+        e.preventDefault()
+        dispatch(genreOrder(e.target.value))
+    }
     return <> 
     <Nav/>
     <div className='HomeBox'>
@@ -61,6 +66,12 @@ function HomePage(){
             <option value= 'A-Z'>A-Z</option>
             <option value='Z-A'> Z-A</option>
         </select>
+        <select className= 'searchbar' onChange= {genOrder}>
+            <option value= {null}>genres</option>
+            {genresState.map((g) => {
+                return <option key= {g.ID} value={g.name}>{g.name}</option>
+            })}
+        </select>
         <select className= 'searchbar' onChange= {ratOrder}>
             <option value= {null}>rating</option>
             <option value='min-max'>min-max</option>
@@ -72,9 +83,7 @@ function HomePage(){
             <option value='API'> from API</option>
         </select>
     </div>
-    <div className= 'cardBox'>
-        <PaginateVideogames/>
-    </div>
+    <PaginateVideogames/>
     </>
 }
 

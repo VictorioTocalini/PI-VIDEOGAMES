@@ -18,14 +18,16 @@ function Card({videogame}){
         >
         <h2>{videogame.name}</h2>
         </Link>
+        <ul  className='genres'>
         {videogame.genres.map((g)=>{
-             return g.name? <h1 key={g.name +'/'+ g.id }>{g.name}</h1> : 
-             <h1 key={g +'/'+ videogame.ID }>{g}</h1>
+            return g.name? <li  key={g.name +'/'+ g.id }>{g.name}</li> : 
+            <li  key={g +'/'+ videogame.ID }>{g}</li>
         })}.
+        </ul>
         <img
          className='image'
          src={videogame.image} 
-         alt='add a photo'
+         alt=''
          />
     </div>
 }

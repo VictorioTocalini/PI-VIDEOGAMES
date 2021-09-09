@@ -12,7 +12,7 @@ function PaginateVideogames() {
         }else setCurrentPage(currentPage+15)
     };
     function prevPage() {
-        if(currentPage<6){
+        if(currentPage<16){
             setCurrentPage(0)
         }else setCurrentPage(currentPage-15)
     };
@@ -27,24 +27,25 @@ function PaginateVideogames() {
         firstPage()
     },[videogames]);
     var pagination = videogames.slice(currentPage, currentPage +15);
-    console.log('pagination',pagination)
-
+    const pageNumber = Math.ceil(currentPage/15) +1
     return <> 
-        {pagination.length>=15 ? (
+        {pagination ? (
             <div>
-                <label> page:{currentPage/15 +1} </label>
+                <label > page:{pageNumber} </label>
                 <button className='button' onClick={firstPage} > {"<<"} </button>
                 <button className='button' onClick={prevPage} > {"<"}   </button>
                 <button className='button' onClick={nextPage} > {">"}   </button>
                 <button className='button' onClick={lastPage} > {">>"}  </button>
             </div>
         ): null}
+        <div className='cardBox' >
         {pagination.map((v)=>{
             return<Card
             key= {v.ID}
             videogame= {v}
             />
         })}
+        </div>
     </>
 }
 
