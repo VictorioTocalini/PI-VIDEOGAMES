@@ -102,6 +102,12 @@ export default function Formulario (){
                     return <option key= {g.ID} value={g.name}>{g.name}</option>
                 })}
             </select>
+            <ul className='form_list' >
+                {genres.map((g)=>{
+                    return g.name? <li className='Listed_item' key={g.id}>{g.name}</li> :
+                    <li className='Listed_item' key={g}>{g}</li>
+                })}
+            </ul>
             <label className= 'labelform' htmlFor='platforms' > platforms </label>
             <select name='platforms' onChange={onInputChange} required >
                 {platformsState.map((g) => {

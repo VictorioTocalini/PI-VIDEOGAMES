@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { getGenres, getPlatforms, getVideogames } from '../actions';
 import { useEffect } from "react";
-
+import './landingPage.css'
 function LandingPage(){
     const dispatch = useDispatch();
 
@@ -12,18 +12,19 @@ function LandingPage(){
         dispatch(getGenres())
     },[dispatch]);
 
+    const videogames = useSelector(state => state.videogames)
+    console.log(videogames)
     return <> 
-        <div>
-            <h1 className= 'title'>
-                World of Games
-            </h1>
+        <div className='background'>
+            <div className='ENTER_BUTTON'> 
+            { videogames.length <1?  <img key='loading' src='https://i.gifer.com/ZKZx.gif'></img>:
             <Link to ='/home' >
-            <h3 className= 'enter'>
-                enter
-            </h3>
+                <img src='https://i.gifer.com/ZS3t.gif'></img>
             </Link>
+            }
+            </div>
         </div>
     </>
 }
-
+// background= './landing_image1.jpg'  loading= 'https://i.gifer.com/ZKZx.gif'  press start= 'https://i.gifer.com/ZS3t.gif'
 export default LandingPage

@@ -15,7 +15,7 @@ function GameDetail(){
 
     const game= useSelector(state=> state.byID)
 
-    if(game.name){
+    if(game.ID==id){
         return <>
         <Nav/>
         <div className= 'detailBox '>
@@ -47,7 +47,8 @@ function GameDetail(){
             </div>
     </>
     } else return<>
-        <h1 className='error'> loading </h1>
+    <Nav/>
+       <img key='loading' src='https://i.gifer.com/ZKZx.gif'></img>
      </>
 }
 

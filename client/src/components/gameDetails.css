@@ -1,6 +1,7 @@
 *{color: #A5AFAF;;}
-.error{
-    color: brown;
+.loading{
+    width: 300px;
+    height: 400px
 }
 body{
     background-color: #56565A ;

@@ -26,3 +26,10 @@ img{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.form_list{
+    display: flex;
+}
+.Listed_item{
+    font-size: 20px;
+    margin-inline: 5px;
+}

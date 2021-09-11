@@ -1,0 +1,13 @@
+.ENTER_BUTTON{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+}
+.enter{
+    font-size: 80px;
+    color: beige;
+}
+.background{
+    background-image: src='./landing_image1.jpg';
+}
