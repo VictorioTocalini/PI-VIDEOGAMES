@@ -3,6 +3,8 @@ import { useDispatch, useSelector} from 'react-redux';
 import { getGenres, getPlatforms, getVideogames } from '../actions';
 import { useEffect } from "react";
 import './landingPage.css'
+import landing_image from './landing_image1.jpg'
+
 function LandingPage(){
     const dispatch = useDispatch();
 
@@ -12,12 +14,14 @@ function LandingPage(){
         dispatch(getGenres())
     },[dispatch]);
 
+    // const style= {
+    //     background : landing_image
+    // }
     const videogames = useSelector(state => state.videogames)
-    console.log(videogames)
     return <> 
         <div className='background'>
             <div className='ENTER_BUTTON'> 
-            { videogames.length <1?  <img key='loading' src='https://i.gifer.com/ZKZx.gif'></img>:
+            { videogames.length <1?  <img className='loading' key='loading' src='https://i.gifer.com/ZKZx.gif'></img>:
             <Link to ='/home' >
                 <img src='https://i.gifer.com/ZS3t.gif'></img>
             </Link>

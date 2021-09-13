@@ -35,10 +35,11 @@ function HomePage(){
     }
     function alfOrder(e){
         e.preventDefault()
+
         dispatch(alfabeticOrder(e.target.value))
     }
     function ratOrder(e) {
-        console.log(e)
+        e.preventDefault()
         dispatch(ratingOrder(e.target.value))
     }
     function DBorAPI(e){
@@ -61,7 +62,7 @@ function HomePage(){
                 className= 'Searchbar'
                 name= 'Searchbar'
                 value= {input.name}
-                placeholder= 'search'
+                placeholder= 'search...'
                 />
                 <button className='button_search' onClick= {onSubmitSearch}>enter</button>
             </div>
@@ -72,7 +73,7 @@ function HomePage(){
                     <option value='Z-A'> Z-A</option>
                 </select>
                 <select className= 'filters' onChange= {genOrder}>
-                    <option value= {null}>genres</option>
+                    <option >genres</option>
                     {genresState.map((g) => {
                         return <option key= {g.ID} value={g.name}>{g.name}</option>
                     })}
@@ -95,10 +96,3 @@ function HomePage(){
 }
 
 export default HomePage
-
-// {videogames.length>0? videogames.map((v)=> {
-//     return<Card
-//     key= {v.ID}
-//     videogame= {v}
-//     />
-// }): null} 

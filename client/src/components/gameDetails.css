@@ -1,7 +1,6 @@
 *{color: #A5AFAF;;}
 .loading{
-    width: 300px;
-    height: 400px
+margin-top: 150px;
 }
 body{
     background-color: #56565A ;
@@ -11,7 +10,7 @@ body{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 }
 .gameDetailImage{
@@ -19,11 +18,17 @@ body{
     display: block;
     position: relative; 
     margin-left: 100px;
-    border: 2px solid #A5AFAF
+    border: 2px solid #A5AFAF;
+    margin-right: 150px;
 }
 .description{
     display: inline-block;
     max-width: 80%;
+    border: 1px solid black;
+    font-size: 20px;
+    background-color: #192734;
+    border: 2px solid #A5AFAF;
+    margin-top: 25px;
 }
 .data{
     width: 50%;

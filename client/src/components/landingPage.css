@@ -1,3 +1,4 @@
+
 .ENTER_BUTTON{
     display: flex;
     flex-direction: column;
@@ -8,6 +9,6 @@
     font-size: 80px;
     color: beige;
 }
-.background{
-    background-image: src='./landing_image1.jpg';
+body{
+   background-image: url('./landing_image1.jpg');
 }

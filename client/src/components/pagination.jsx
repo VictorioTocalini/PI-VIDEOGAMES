@@ -39,7 +39,8 @@ function PaginateVideogames() {
                 <button className='Page_button' onClick={lastPage} > {">>"}  </button>
             </div>
         ): null}
-        <div className='cardBox' >
+        {pagination.length>1? (
+            <div className='cardBox' >
         {pagination.map((v)=>{
             return<Card
             key= {v.ID}
@@ -47,6 +48,7 @@ function PaginateVideogames() {
             />
         })}
         </div>
+        ): <img className='loading' key='loading' src='https://i.gifer.com/ZKZx.gif'></img>}
     </>
 }
 

@@ -121,6 +121,7 @@ export default function Formulario (){
               name='image'
               onChange={onInputChange}
               value={input.image}
+              placeholder='url. type...'
               />
               <img width='10%' src={input.image} alt=''/>
             <button type='submit'>CREATE</button>

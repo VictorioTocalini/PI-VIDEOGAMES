@@ -1,6 +1,7 @@
 *{text-decoration: none;}
 .image{
     width: 400px;
+    height: 200px;
     margin: 10px;
     padding: 5px;
     border: 2px solid;
@@ -21,7 +22,6 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
-    background-color: #56565A;
     margin-top: 10px;
 }
 .genres{
@@ -37,6 +37,5 @@ li{
 .cardTitle{
     border: 1px solid  #A5AFAF;
     border-radius: 5px;
-    width: 200px;
     color: #A5AFAF;
 }

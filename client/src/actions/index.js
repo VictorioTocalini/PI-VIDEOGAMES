@@ -159,7 +159,6 @@ export function ratingOrder(value){
 }
 export function genreOrder(value){
     return function(dispatch) {
-        if(value === 'null') return
         fetch(LH + '/videogames')
         .then(r => r.json())
         .then(json => {
